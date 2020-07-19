@@ -4,6 +4,7 @@ RUN apk add openssl bash mysql-client nodejs npm
 RUN apk add --no-cache shadow
 RUN docker-php-ext-install pdo pdo_mysql
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
@@ -15,15 +16,13 @@ RUN rm -rf /var/www/html
 RUN ln -s public html
 COPY . /var/www
 
+RUN composer install && \
+	php artisan key:generate && \
+	php artisan cache:clear && \
+	chmod -R 775 storage
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN npm install
 
-#RUN composer install && \
-#	cp .env.example .env && \
-#	php artisan key:generate && \
-#	php artisan config:cache && \
-#	php artisan migrate
-	
 
 RUN usermod -u 1000 www-data
 USER www-data
