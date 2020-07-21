@@ -18,6 +18,11 @@ RUN ln -s public html
 COPY . /var/www
 
 
+RUN composer install && \
+	php artisan key:generate && \
+	php artisan cache:clear && \
+	chmod -R 775 storage
+
 RUN usermod -u 1000 www-data
 USER www-data
 
