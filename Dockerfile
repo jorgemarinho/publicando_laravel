@@ -17,13 +17,10 @@ RUN ln -s public html
 COPY . /var/www
 
 
-RUN composer install && \
-	php artisan key:generate && \
-	php artisan cache:clear && \
-	chmod -R 775 storage && \
-	chmod -R 777 .env  && \
-	chmod -R 777 -R .docker/app && \
-	chmod -R 777 -R .docker/dbdata
+#RUN composer install && \
+#	php artisan key:generate && \
+#	php artisan cache:clear && \
+#	chmod -R 775 storage
 
 #RUN npm install
 
