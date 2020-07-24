@@ -28,8 +28,8 @@ RUN composer install && \
 #RUN npm install
 
 
-RUN usermod -u 1000 www-data
-USER www-data
+#RUN usermod -u 1000 www-data
+#USER www-data
 
 EXPOSE 9000
 
