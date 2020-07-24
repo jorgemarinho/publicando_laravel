@@ -16,19 +16,20 @@ RUN rm -rf /var/www/html
 RUN ln -s public html
 COPY . /var/www
 
-RUN composer install && \
-	php artisan key:generate && \
-	php artisan cache:clear && \
-	chmod -R 775 storage && \
-	chmod -R 777 .env  && \
-	chmod -R 777 -R .docker/app && \
-	chmod -R 777 -R .docker/dbdata
 
-RUN npm install
+#RUN composer install && \
+#	php artisan key:generate && \
+#	php artisan cache:clear && \
+#	chmod -R 775 storage && \
+#	chmod -R 777 .env  && \
+#	chmod -R 777 -R .docker/app && \
+#	chmod -R 777 -R .docker/dbdata
+
+#RUN npm install
 
 
-RUN usermod -u 1000 www-data
-USER www-data
+#RUN usermod -u 1000 www-data
+#USER www-data
 
 EXPOSE 9000
 
