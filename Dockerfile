@@ -13,9 +13,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     
 WORKDIR /var/www
 RUN rm -rf /var/www/html
-RUN ln -s public html
 COPY . /var/www
 
+RUN ln -s public html
 
 #RUN composer install && \
 #	php artisan key:generate && \
@@ -25,8 +25,8 @@ COPY . /var/www
 #RUN npm install
 
 
-RUN usermod -u 1000 www-data
-USER www-data
+#RUN usermod -u 1000 www-data
+#USER www-data
 
 EXPOSE 9000
 
