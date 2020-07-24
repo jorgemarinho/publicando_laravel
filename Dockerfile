@@ -24,7 +24,6 @@ RUN ln -s public html
 
 #RUN npm install
 
-
 #RUN usermod -u 1000 www-data
 #USER www-data
 
