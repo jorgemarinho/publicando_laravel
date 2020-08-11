@@ -2,7 +2,7 @@
 
 Utilizando laravel e realizando o commit
 
-<a href="https://hub.docker.com/repository/docker/coatylink/laravel">DockerHub</a>
+<a href="https://hub.docker.com/repository/docker/coatylink/projetogo">DockerHub Projeto GO 2M</a>
 </p>
 
 
